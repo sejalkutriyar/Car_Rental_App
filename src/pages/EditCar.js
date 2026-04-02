@@ -26,7 +26,7 @@ function EditCar() {
     e.preventDefault();
     try {
       const res = await axios.post('https://carrentalapk.infinityfreeapp.com/cars/edit.php',
-        { ...form, id });
+        { ...form, id, agency_id: user.id });
       if (res.data.success) {
         setMsg('Car updated!');
         setTimeout(() => navigate('/available-cars'), 1500);

@@ -80,7 +80,7 @@ function AvailableCars() {
               <button className="btn btn-secondary" onClick={() => handleRent(car)}>Rent Car</button>
             )}
 
-            {user?.role === 'agency' && (
+            {user?.role === 'agency' && Number(user.id) === Number(car.agency_id) && (
               <button className="btn btn-accent"
                 onClick={() => navigate(`/edit-car/${car.id}`)}>Edit</button>
             )}
