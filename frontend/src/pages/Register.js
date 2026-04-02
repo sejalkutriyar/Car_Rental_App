@@ -12,7 +12,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://carrentalapk.infinityfreeapp.com/auth/register.php', form);
+      const res = await axios.post('http://localhost:8080/car-rental-api/auth/register.php', form);
       if (res.data.success) {
         setMsg('Registered successfully! Please login.');
         setTimeout(() => navigate('/login'), 1500);

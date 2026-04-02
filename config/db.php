@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-$host = "sql100.infinityfree.com";
-$db   = "if0_41553602_car_rental";
-$user = "if0_41553602";
-$pass = "Sejal800";
+$host = "localhost";
+$db   = "car_rental";
+$user = "root";
+$pass = "";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);

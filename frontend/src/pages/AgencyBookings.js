@@ -9,7 +9,7 @@ function AgencyBookings() {
 
   useEffect(() => {
     if (user?.role === 'agency') {
-      axios.get(`https://carrentalapk.infinityfreeapp.com/booking/agency_view.php?agency_id=${user.id}`)
+      axios.get(`http://localhost:8080/car-rental-api/booking/agency_view.php?agency_id=${user.id}`)
         .then(res => setBookings(res.data));
     }
   }, [user]);

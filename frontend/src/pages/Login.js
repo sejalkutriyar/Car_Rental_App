@@ -13,7 +13,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://carrentalapk.infinityfreeapp.com/auth/login.php', form);
+      const res = await axios.post('http://localhost:8080/car-rental-api/auth/login.php', form);
       if (res.data.success) {
         login(res.data.user);
         navigate('/available-cars');

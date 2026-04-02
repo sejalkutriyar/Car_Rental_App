@@ -12,7 +12,7 @@ function AvailableCars() {
   const [bookingData, setBookingData] = useState({});
 
   useEffect(() => {
-    axios.get('https://carrentalapk.infinityfreeapp.com/cars/list.php')
+    axios.get('http://localhost:8080/car-rental-api/cars/list.php')
       .then(res => setCars(res.data));
   }, []);
 
@@ -27,7 +27,7 @@ function AvailableCars() {
     }
 
     try {
-      const res = await axios.post('https://carrentalapk.infinityfreeapp.com/cars/rent.php', {
+      const res = await axios.post('http://localhost:8080/car-rental-api/cars/rent.php', {
         car_id: car.id,
         customer_id: user.id,
         start_date: data.start_date,
@@ -63,17 +63,17 @@ function AvailableCars() {
             <p><b>Rent:</b> ₹{car.rent_per_day}/day</p>
 
             {user && user.role === 'customer' && (
-              <>
-                <input type="date" className="input"
-                  onChange={e => setBookingData({...bookingData, [car.id]: {...bookingData[car.id], start_date: e.target.value}})} />
-                <select className="input"
-                  onChange={e => setBookingData({...bookingData, [car.id]: {...bookingData[car.id], num_days: e.target.value}})}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', margin: '14px 0' }}>
+                <input type="date" className="input" style={{ width: '100%' }}
+                  onChange={e => setBookingData({ ...bookingData, [car.id]: { ...bookingData[car.id], start_date: e.target.value } })} />
+                <select className="input" style={{ width: '100%' }}
+                  onChange={e => setBookingData({ ...bookingData, [car.id]: { ...bookingData[car.id], num_days: e.target.value } })}>
                   <option value="">Select Days</option>
-                  {[1,2,3,4,5,6,7,10,14,30].map(d => (
-                    <option key={d} value={d}>{d} day{d>1?'s':''}</option>
+                  {[1, 2, 3, 4, 5, 6, 7, 10, 14, 30].map(d => (
+                    <option key={d} value={d}>{d} Day{d > 1 ? 's' : ''}</option>
                   ))}
                 </select>
-              </>
+              </div>
             )}
 
             {user?.role !== 'agency' && (

@@ -16,7 +16,7 @@ function AddCar() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://carrentalapk.infinityfreeapp.com/cars/add.php',
+      const res = await axios.post('http://localhost:8080/car-rental-api/cars/add.php',
         { ...form, agency_id: user.id });
       if (res.data.success) {
         setMsg('Car added successfully!');

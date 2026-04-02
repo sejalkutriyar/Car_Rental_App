@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# 🚗 Car Rental Agency Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the **Car Rental Agency** Full-Stack Web Application! This system was designed with a focus on real-world practical usage, robust clean architecture, and decoupled technologies.
 
-## Available Scripts
+It serves 2 primary types of users:
+1. **Customers**: Can browse available cars and book vehicles for a specific number of days.
+2. **Car Rental Agencies**: Can register, manage (add/view/update) their own cars, and view booked cars by customers.
 
-In the project directory, you can run:
+## 🛠 Tech Stack
+* **Frontend**: React.js (Modern Functional Components, Context API, Framer Motion for Animations)
+* **Backend**: Core PHP 8 (RESTful JSON APIs, PDO for secure queries)
+* **Database**: MySQL 
 
-### `npm start`
+## ⚙️ How to Setup & Run locally (For Evaluator)
+This project is configured to run smoothly on an offline **XAMPP / WAMP** server setup.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Step 1: Database Setup
+1. Turn on Apache and MySQL from your XAMPP Control Panel.
+2. Open `http://localhost/phpmyadmin` (or `http://localhost:8080/phpmyadmin` depending on your ports).
+3. Create a new database named exactly: **`car_rental`**
+4. Click on the **Import** tab and upload the `car_rental.sql` file provided in the root of this folder.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Step 2: Backend Setup
+1. Ensure this entire project folder (`car-rental-api`) is moved inside your XAMPP's `htdocs` directory (e.g., `C:\xampp\htdocs\car-rental-api`).
+2. *Note: If your Apache runs on a port other than 8080, please adjust the API endpoints in the React `frontend/src/pages/` files.*
 
-### `npm test`
+### Step 3: Frontend Setup
+1. Open a terminal in the main folder and navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+2. Install the necessary Node modules:
+   ```bash
+   npm install
+   ```
+3. Start the React development server:
+   ```bash
+   npm start
+   ```
+4. The application will launch at `http://localhost:3000`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🛡️ Security & Features Implemented
+* **Agency-specific CRUD**: Strict SQL constraints (`agency_id=?`) ensures that an agency can only edit and view cars that belong to them.
+* **CORS Handling**: Proper Cross-Origin headers are attached across all PHP endpoints.
+* **Relational Database**: Fully normalized SQL schema with `ON DELETE CASCADE` ensuring data integrity if associations are removed.
+* **Dynamic Styling**: Clean, modern dark-mode aesthetic with interactive hover micro-animations.

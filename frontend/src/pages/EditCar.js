@@ -11,7 +11,7 @@ function EditCar() {
   const [msg, setMsg] = useState('');
 
   useEffect(() => {
-    axios.get('https://carrentalapk.infinityfreeapp.com/cars/list.php')
+    axios.get('http://localhost:8080/car-rental-api/cars/list.php')
       .then(res => {
         const car = res.data.find(c => c.id === parseInt(id));
         if (car) setForm(car);
@@ -25,7 +25,7 @@ function EditCar() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://carrentalapk.infinityfreeapp.com/cars/edit.php',
+      const res = await axios.post('http://localhost:8080/car-rental-api/cars/edit.php',
         { ...form, id });
       if (res.data.success) {
         setMsg('Car updated!');
